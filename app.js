@@ -10,8 +10,9 @@ require('dotenv').config()
 const express =  require('express');
 const session = require('express-session');
 const path = require('path');
-const fs = require('fs')
-const database = require('./route_modules/database');
+const fs = require('fs');
+const ejs = require('ejs');
+const database = require('./config/database');
 const DB_PATH = `${__dirname}/database/`;
 process.env.DB_PATH = DB_PATH;
 
