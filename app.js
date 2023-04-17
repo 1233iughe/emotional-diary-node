@@ -14,6 +14,7 @@ const fs = require('fs');
 const ejs = require('ejs');
 const database = require('./config/database');
 const DB_PATH = `${__dirname}/database/`;
+const router = require('./routes.js');
 process.env.DB_PATH = DB_PATH;
 
 //Global variables
@@ -28,6 +29,8 @@ function appInit() {
         const app = express();
         //Setting/creating connection to database
         app.db = database.dbInit(DB_PATH);
+        //Setting view engine so .ejs is not necessary
+        app.engine('.html', require('ejs').__express);
         //Setting listening port
         app.listen(PORT, () => console.log(`app available on local on http://localhost:${PORT}`));
         return app;
@@ -38,18 +41,7 @@ function appInit() {
 
 app = appInit();
 
+app.use('/', router.auth);
 
-//Callback functions take a request and a response
-//*Setting the root route of the app
-const filePath = path.join(__dirname, 'index.html');
-
-app.get('/', (request,response) => {
-    fs.readFile(filePath, 'utf8', (err,html) => {
-        if (err) {
-            response.status(500).send('sorry we fucked up')
-        }
-        response.send(html)
-    })
-})
 
 

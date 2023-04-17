@@ -18,9 +18,9 @@ function dbInit(DB_PATH) {
                     } else {
                         //Database creation
                         const db = new sqlite3.Database(DB_PATH + 'database.db');
-                        // * Check that schema path is right
+                        // ! Check that schema path is right
                         //Database population
-                        fs.readFile('schema.sql','utf-8', (error, blueprint) => {
+                        fs.readFile('./config/schema.sql','utf-8', (error, blueprint) => {
                             if (error) {
                                 console.log(error.message);
                             } else {

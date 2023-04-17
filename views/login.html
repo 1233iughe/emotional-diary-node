@@ -1,8 +1,4 @@
-{% extends "layout.html"%}
-{% block title %}
-    Login
-{% endblock %}
-{% block main%}
+
     <form method="POST" action="/auth/login" autocomplete="off">
         <h1 alignment="center">Login</h1>
         <div class="form-group mb-3">
@@ -30,4 +26,4 @@
             <a href="/auth/recover">Don't remember your password?</a>
         </div>
     </form>
-{% endblock %}
+    <script src="../public/JavaScript/login.js"></script>
