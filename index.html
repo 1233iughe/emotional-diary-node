@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <!--Metadata and shit-->
+    <head>
+        <meta charset="utf-8">
+        <title>Tables</title>
+        <!--stylesheet-->
+        <link rel="stylesheet" href="./styles.css">
+        
+
+    </head>
+    <body>
+        <div id="container">
+            <h1>Diary mockup</h1>
+            <div id="table-div">
+                <table id="table_1">
+                    <thead>
+                        <tr id="title-td">
+                            <th scope="col">Emotion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body">
+                        {% for dict in records%}
+                            <tr>
+                                <td class="removable-td" 
+                                style="background-color: {{dict["log_color"]}};"
+                                id="{{dict["id"]}}">
+                                    {{ dict["log_text"] }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="entry-bar-div">
+                <div>
+                    <input type="color"  id="color-input">
+                </div>
+                <div>
+                    <input type="text" id="logEntry" required>
+                </div>
+                <div>
+                    <input type="submit" value="+" id="logSubmit">
+                </div>
+            </div>
+            <footer>
+                Alethia 2023. All rights reserved.
+            </footer>    
+        </div>
+        <!--Logic needed for the thing to run-->
+       
+        <script src="/static/logic.js"></script>
+    </body>
+</html>
