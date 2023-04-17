@@ -11,8 +11,9 @@ const express =  require('express');
 const session = require('express-session');
 const path = require('path');
 const fs = require('fs')
-const 
-
+const database = require('./route_modules/database');
+const DB_PATH = `${__dirname}/database/`;
+process.env.DB_PATH = DB_PATH;
 
 //Global variables
 //*Defining listening port
@@ -25,7 +26,7 @@ function appInit() {
         //Creating app
         const app = express();
         //Setting/creating connection to database
-        app.db = dbInit();
+        app.db = database.dbInit(DB_PATH);
         //Setting listening port
         app.listen(PORT, () => console.log(`app available on local on http://localhost:${PORT}`));
         return app;

@@ -1,9 +1,10 @@
 const sqlite3 = require('sqlite3');
-const DB_PATH = `${__dirname}/database/`;
-process.env.DB_PATH = DB_PATH;
+
+const fs = require('fs');
+
 
 //Data base creation and connection
-function dbInit() {
+function dbInit(DB_PATH) {
     try {
         fs.access(DB_PATH, function(error) {
             if (error) {
@@ -49,4 +50,4 @@ function dbInit() {
     }
 }
 
-module.exports = database;
+module.exports = {dbInit};
